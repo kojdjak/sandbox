@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reality</title>
+</head>
+<body>
+{% if latest_reality_list %}
+    <ul>
+    {% for reality in latest_reality_list %}
+        <li><a href="/reality/{{ reality.id }}/">{{ reality.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No realities are available.</p>
+{% endif %}
+</body>
+</html>
