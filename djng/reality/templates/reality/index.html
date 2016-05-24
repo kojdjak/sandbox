@@ -8,7 +8,7 @@
 {% if latest_reality_list %}
     <ul>
     {% for reality in latest_reality_list %}
-        <li><a href="/reality/{{ reality.id }}/">{{ reality.name }}</a></li>
+        <li><a href="{% url 'reality:detail' reality.id %}">{{ reality.name }}</a></li>
     {% endfor %}
     </ul>
 {% else %}

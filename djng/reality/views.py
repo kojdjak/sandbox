@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.template import loader
 
 
@@ -10,16 +10,21 @@ from .models import House
 
 
 def index(request):
-    latest_reality_list = House.objects.order_by('id')[:5]
-    template = loader.get_template('reality/index.html')
+    latest_reality_list = House.objects.all()[:5]
+#    template = loader.get_template('reality/index.html')
     context = {
         'latest_reality_list': latest_reality_list,
     }
-    return HttpResponse(template.render(context, request))
+    return render(request, 'reality/index.html', context)
+#    return HttpResponse(template.render(context, request))
 
 
 def detail(request, reality_id):
-    return HttpResponse("You are looking at reality %s." % reality_id)
+    try:
+        house = House.objects.get(pk=reality_id)
+    except House.DoesNotExist:
+        raise Http404("House doesn't exist")
+    return render(request, 'reality/detail.html', {'reality': house})
 
 
 
