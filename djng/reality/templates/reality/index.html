@@ -14,5 +14,11 @@
 {% else %}
     <p>No realities are available.</p>
 {% endif %}
+<form action="{%  url 'reality:add' %}" method="post">
+{% csrf_token %}
+    <input type="text" name="add_reality" />
+    <input type="submit" value="add" />
+</form>
+
 </body>
 </html>

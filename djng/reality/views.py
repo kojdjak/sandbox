@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.template import loader
-
+from django.core.urlresolvers import reverse
 
 from .models import House
 
@@ -26,6 +26,14 @@ def detail(request, reality_id):
         raise Http404("House doesn't exist")
     return render(request, 'reality/detail.html', {'reality': house})
 
+
+def add(request):
+    new_reality = request.POST['add_reality']
+    if new_reality:
+        house = House()
+        house.name = new_reality
+        house.save()
+    return HttpResponseRedirect(reverse('reality:index'))
 
 
 
