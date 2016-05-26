@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Reality</title>
+
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'reality/main.css' %}" />
 </head>
 <body>
 {% if latest_reality_list %}
