@@ -1,8 +1,3 @@
 # sandbox
 
-```python
-urlpatterns = [
-    url(r'^reservations/', include('reservations.urls')),
-    url(r'^admin/', admin.site.urls),
-]
-```
+This is my sandbox to play with different projects. Use content as you wish with no waranty.
